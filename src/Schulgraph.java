@@ -127,12 +127,6 @@ public class Schulgraph {
         return Besuchte;
     }
 
-    public void List() {
-    }
-
-    public void Tiefensuche() {
-    }
-
     public List Tiefensuche(Vertex pStart) {
         return null;
     }
