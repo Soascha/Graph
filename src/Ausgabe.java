@@ -1,15 +1,14 @@
 import java.util.Scanner;
-import utils.*;
 
-public class Verwaltung {
+public class Ausgabe {
     private Scanner scanner;
     private Schulgraph schulgraph;
 
     public static void main(String[] args) {
-        new Verwaltung();
+        new Ausgabe();
     }
 
-    public Verwaltung() {
+    public Ausgabe() {
         scanner = new Scanner(System.in);
         schulgraph = new Schulgraph();
 
