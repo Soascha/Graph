@@ -27,6 +27,7 @@ public class Schulgraph {
         schulgraph.addEdge(new Edge(Aula, Inforaum, 95));
         schulgraph.addEdge(new Edge(Aula, WC, 15));
         Vertex Kunstraum = new Vertex("Kunstraum");
+        schulgraph.addVertex(Kunstraum);
         schulgraph.addEdge(new Edge(Kunstraum, Inforaum, 64));
         schulgraph.addEdge(new Edge(Kunstraum, Aula, 71));
         Vertex Musikraum = new Vertex("Musikraum");
@@ -39,6 +40,7 @@ public class Schulgraph {
         schulgraph.addEdge(new Edge(Inforaum2, Musikraum, 55));
         schulgraph.addEdge(new Edge(Inforaum2, Kunstraum, 50));
         Vertex Schulzoo = new Vertex("Schulzoo");
+        schulgraph.addVertex(Schulzoo);
         schulgraph.addEdge(new Edge(Schulzoo, Inforaum, 5));
         Vertex Chemieraum = new Vertex("Chemieraum");
         schulgraph.addVertex(Chemieraum);
@@ -95,13 +97,34 @@ public class Schulgraph {
         schulgraph.addEdge(new Edge(Cafeteria, WC, 22));
         schulgraph.addEdge(new Edge(Cafeteria, Aula, 7));
         schulgraph.addEdge(new Edge(Cafeteria, Kunstraum, 90));
-        Breitensuche();
-
-
     }
 
     public List Breitensuche() {
+        schulgraph.setAllVertexMarks(false);
+        Queue <Vertex> zuBesuchende = new Queue();
+        List <Vertex> Nachbarn = new List();
+        List <Vertex> Besuchte = new List();
 
+        zuBesuchende.enqueue(schulgraph.getVertex("Inforaum"));
+        zuBesuchende.front().setMark(true);
+        while (!zuBesuchende.isEmpty()) {
+            Nachbarn = schulgraph.getNeighbours(zuBesuchende.front());
+            Nachbarn.toFirst();
+            Besuchte.append(zuBesuchende.front());
+            Besuchte.toLast();
+            System.out.println(Besuchte.getContent().getID());
+            while(Nachbarn.hasAccess()){
+                if(Nachbarn.getContent().isMarked()) {
+                }
+                else {
+                    zuBesuchende.enqueue(Nachbarn.getContent());
+                    Nachbarn.getContent().setMark(true);
+                }
+                Nachbarn.next();
+            }
+            zuBesuchende.dequeue();
+        }
+        return Besuchte;
     }
 
     public void List() {
@@ -111,5 +134,6 @@ public class Schulgraph {
     }
 
     public List Tiefensuche(Vertex pStart) {
+        return null;
     }
 }
