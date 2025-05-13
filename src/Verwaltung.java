@@ -21,4 +21,9 @@ public class Verwaltung {
 
             if (option == 1) {
                 schulgraph.Breitensuche();
-            }}}}
+            } else if (option == 2) {
+
+            }
+        }
+    }
+}
